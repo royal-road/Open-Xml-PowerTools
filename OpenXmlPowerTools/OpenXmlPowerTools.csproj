@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Authors>Microsoft, Eric White, Lionel Vallet, Mitchell Kutchuk</Authors>
 		<RepositoryUrl>https://github.com/royal-road/Open-Xml-PowerTools</RepositoryUrl>
@@ -10,7 +10,7 @@
 		<PackageProjectUrl>https://github.com/royal-road/Open-Xml-PowerTools</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Description>
-			Based on maintainer EricWhite's vNext fork, includes .NET 8.0, .NET 9.0 and .NET Standard 2.0 build target for use in cross-platform scenarios.
+			Based on maintainer EricWhite's vNext fork, includes .NET 8.0, .NET 9.0, .NET 10.0 and .NET Standard 2.0 build target for use in cross-platform scenarios.
 
 			The Open XML PowerTools provides guidance and example code for programming with Open XML Documents (DOCX, XLSX, and PPTX). It is based on, and extends the functionality of the Open XML SDK.
 
@@ -34,6 +34,9 @@
 		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net9.0|AnyCPU'">
+		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net10.0|AnyCPU'">
 		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
 	</PropertyGroup>
 	<ItemGroup>

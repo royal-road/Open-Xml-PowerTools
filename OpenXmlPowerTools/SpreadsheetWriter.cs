@@ -381,7 +381,7 @@ namespace OpenXmlPowerTools
                             break;
                         case CellDataType.Date:
                             xw.WriteStartAttribute("t");
-                            xw.WriteValue("d");
+                            xw.WriteValue("n");
                             xw.WriteEndAttribute();
                             break;
                         case CellDataType.Number:
@@ -403,7 +403,10 @@ namespace OpenXmlPowerTools
                     if (cell.Value != null)
                     {
                         xw.WriteStartElement("v", ns);
-                        xw.WriteValue(cell.Value);
+                        if (cell.CellDataType == CellDataType.Date && cell.Value is DateTime dateTime)
+                            xw.WriteValue(dateTime.ToOADate());
+                        else
+                            xw.WriteValue(cell.Value);
                         xw.WriteEndElement();
                     }
                     xw.WriteEndElement();

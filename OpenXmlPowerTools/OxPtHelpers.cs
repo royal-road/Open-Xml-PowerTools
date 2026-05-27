@@ -408,10 +408,15 @@ AAsACwDBAgAAbCwAAAAA";
                                 imageCounter.ToString() + "." + extension;
                             try
                             {
-                                using (var data = imageInfo.Bitmap.Encode(imageFormat.Value, 100)) 
-                                using (var imageFile = File.Create(imageFileName))
+                                using (var data = imageInfo.Bitmap.Encode(imageFormat.Value, 100))
                                 {
-                                    data.SaveTo(imageFile);
+                                    if (data == null)
+                                        return null;
+
+                                    using (var imageFile = File.Create(imageFileName))
+                                    {
+                                        data.SaveTo(imageFile);
+                                    }
                                 }
                             }
                             catch (System.Runtime.InteropServices.ExternalException)

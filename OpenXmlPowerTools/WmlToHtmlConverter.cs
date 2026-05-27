@@ -3102,6 +3102,9 @@ namespace OpenXmlPowerTools
             using (var partStream = imagePart.GetStream())
             using (var bitmap = SKImage.FromEncodedData(partStream))
             {
+                if (bitmap == null)
+                    return null;
+
                 if (extentCx != null && extentCy != null)
                 {
                     var imageInfo = new ImageInfo()
@@ -3168,6 +3171,9 @@ namespace OpenXmlPowerTools
                     {
                         using (var bitmap = SKImage.FromEncodedData(partStream))
                         {
+                            if (bitmap == null)
+                                return null;
+
                             var imageInfo = new ImageInfo()
                             {
                                 Bitmap = bitmap,

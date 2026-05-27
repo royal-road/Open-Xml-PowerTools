@@ -241,9 +241,14 @@ namespace OxPt
                             try
                             {
                                 using (var data = imageInfo.Bitmap.Encode(imageFormat.Value, 100))
-                                using (var stream = File.Create(imageFileName)) 
                                 {
-                                    data.SaveTo(stream);
+                                    if (data == null)
+                                        return null;
+
+                                    using (var stream = File.Create(imageFileName))
+                                    {
+                                        data.SaveTo(stream);
+                                    }
                                 }
                             }
                             catch (System.Runtime.InteropServices.ExternalException)
@@ -338,9 +343,14 @@ namespace OxPt
                             try
                             {
                                 using (var data = imageInfo.Bitmap.Encode(imageFormat.Value, 100))
-                                using (var stream = File.Create(imageFileName)) 
                                 {
-                                    data.SaveTo(stream);
+                                    if (data == null)
+                                        return null;
+
+                                    using (var stream = File.Create(imageFileName))
+                                    {
+                                        data.SaveTo(stream);
+                                    }
                                 }
                             }
                             catch (System.Runtime.InteropServices.ExternalException)

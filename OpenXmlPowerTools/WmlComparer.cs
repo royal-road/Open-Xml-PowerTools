@@ -1453,25 +1453,28 @@ namespace OpenXmlPowerTools
             styleDefinitionsPart.PutXDocument();
         }
 
-        private static XAttribute[] NamespaceAttributes =
+        private static XAttribute[] CreateNamespaceAttributes()
         {
-            new XAttribute(XNamespace.Xmlns + "wpc", WPC.wpc),
-            new XAttribute(XNamespace.Xmlns + "mc", MC.mc),
-            new XAttribute(XNamespace.Xmlns + "o", O.o),
-            new XAttribute(XNamespace.Xmlns + "r", R.r),
-            new XAttribute(XNamespace.Xmlns + "m", M.m),
-            new XAttribute(XNamespace.Xmlns + "v", VML.vml),
-            new XAttribute(XNamespace.Xmlns + "wp14", WP14.wp14),
-            new XAttribute(XNamespace.Xmlns + "wp", WP.wp),
-            new XAttribute(XNamespace.Xmlns + "w10", W10.w10),
-            new XAttribute(XNamespace.Xmlns + "w", W.w),
-            new XAttribute(XNamespace.Xmlns + "w14", W14.w14),
-            new XAttribute(XNamespace.Xmlns + "wpg", WPG.wpg),
-            new XAttribute(XNamespace.Xmlns + "wpi", WPI.wpi),
-            new XAttribute(XNamespace.Xmlns + "wne", WNE.wne),
-            new XAttribute(XNamespace.Xmlns + "wps", WPS.wps),
-            new XAttribute(MC.Ignorable, "w14 wp14"),
-        };
+            return new XAttribute[]
+            {
+                new XAttribute(XNamespace.Xmlns + "wpc", WPC.wpc),
+                new XAttribute(XNamespace.Xmlns + "mc", MC.mc),
+                new XAttribute(XNamespace.Xmlns + "o", O.o),
+                new XAttribute(XNamespace.Xmlns + "r", R.r),
+                new XAttribute(XNamespace.Xmlns + "m", M.m),
+                new XAttribute(XNamespace.Xmlns + "v", VML.vml),
+                new XAttribute(XNamespace.Xmlns + "wp14", WP14.wp14),
+                new XAttribute(XNamespace.Xmlns + "wp", WP.wp),
+                new XAttribute(XNamespace.Xmlns + "w10", W10.w10),
+                new XAttribute(XNamespace.Xmlns + "w", W.w),
+                new XAttribute(XNamespace.Xmlns + "w14", W14.w14),
+                new XAttribute(XNamespace.Xmlns + "wpg", WPG.wpg),
+                new XAttribute(XNamespace.Xmlns + "wpi", WPI.wpi),
+                new XAttribute(XNamespace.Xmlns + "wne", WNE.wne),
+                new XAttribute(XNamespace.Xmlns + "wps", WPS.wps),
+                new XAttribute(MC.Ignorable, "w14 wp14"),
+            };
+        }
 
         private static void AddFootnotesEndnotesParts(WordprocessingDocument wDoc)
         {
@@ -1482,7 +1485,7 @@ namespace OpenXmlPowerTools
                 var newFootnotes = wDoc.MainDocumentPart.FootnotesPart.GetXDocument();
                 newFootnotes.Declaration.Standalone = "yes";
                 newFootnotes.Declaration.Encoding = "UTF-8";
-                newFootnotes.Add(new XElement(W.footnotes, NamespaceAttributes));
+                newFootnotes.Add(new XElement(W.footnotes, CreateNamespaceAttributes()));
                 mdp.FootnotesPart.PutXDocument();
             }
             if (mdp.EndnotesPart == null)
@@ -1491,7 +1494,7 @@ namespace OpenXmlPowerTools
                 var newEndnotes = wDoc.MainDocumentPart.EndnotesPart.GetXDocument();
                 newEndnotes.Declaration.Standalone = "yes";
                 newEndnotes.Declaration.Encoding = "UTF-8";
-                newEndnotes.Add(new XElement(W.endnotes, NamespaceAttributes));
+                newEndnotes.Add(new XElement(W.endnotes, CreateNamespaceAttributes()));
                 mdp.EndnotesPart.PutXDocument();
             }
         }

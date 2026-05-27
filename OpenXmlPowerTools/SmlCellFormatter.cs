@@ -76,7 +76,7 @@ namespace OpenXmlPowerTools
                 double dv;
                 if (double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out dv))
                 {
-                    if (dv > 0)
+                    if (dv >= 0)
                     {
                         return FormatDouble(splitFormatCode[0], dv, out color);
                     }
@@ -165,6 +165,9 @@ namespace OpenXmlPowerTools
 
         private static string FormatDouble(string formatCode, double dv, out string color)
         {
+            if (dv == 0)
+                dv = 0d;
+
             color = null;
             var trimmed = formatCode.Trim();
             if (trimmed.StartsWith("[") &&
@@ -234,7 +237,7 @@ namespace OpenXmlPowerTools
             }
             if ((cfc.Contains('(') && cfc.Contains(')')) || cfc.Contains('-'))
             {
-                var s3 = (-dv).ToString(cfc, CultureInfo.InvariantCulture).Trim();
+                var s3 = (dv == 0 ? 0d : -dv).ToString(cfc, CultureInfo.InvariantCulture).Trim();
                 return s3;
             }
             else
