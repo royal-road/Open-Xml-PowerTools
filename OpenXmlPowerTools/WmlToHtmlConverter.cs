@@ -898,7 +898,7 @@ namespace OpenXmlPowerTools
             decimal currentMarginLeft)
         {
             var style = new Dictionary<string, string>();
-            int? trHeight = (int?) element.Elements(W.trPr).Elements(W.trHeight).Attributes(W.val).FirstOrDefault();
+            decimal? trHeight = (decimal?) element.Elements(W.trPr).Elements(W.trHeight).Attributes(W.val).FirstOrDefault();
             if (trHeight != null)
                 style.AddIfMissing("height",
                     string.Format(NumberFormatInfo.InvariantInfo, "{0:0.00}in", (decimal) trHeight/1440m));
