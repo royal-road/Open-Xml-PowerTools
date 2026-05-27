@@ -25,7 +25,7 @@
 			•Retrieving metrics from DOCX files, including the hierarchy of styles used, the languages used, and the fonts used.
 			•Writing XLSX files using far simpler code than directly writing the markup, including a streaming approach that enables writing XLSX files with millions of rows.
 		</Description>
-		<Version>4.7.0</Version>
+		<Version>4.7.1</Version>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
 		<TreatWarningsAsErrors>False</TreatWarningsAsErrors>
